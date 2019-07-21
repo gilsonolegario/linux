@@ -31,6 +31,27 @@
 	};
 };
 
+&i2c_1 {
+   status = "okay";
+   samsung,i2c-sda-delay = <100>;
+   samsung,i2c-max-bus-freq = <378000>;
+
+   trackpad@4b {
+      reg = <0x4b>;
+      compatible = "atmel,maxtouch";
+      interrupts = <2 IRQ_TYPE_NONE>;
+      interrupt-parent = <&gpx1>;
+      pinctrl-names = "default";
+      linux,gpio-keymap = <KEY_RESERVED
+                 KEY_RESERVED
+                 KEY_RESERVED
+                 KEY_RESERVED
+                 KEY_RESERVED
+                 BTN_LEFT>;
+      wakeup-source;
+   };
+};
+
 &i2c_7 {
 	max98090: codec@10 {
 		compatible = "maxim,max98090";
